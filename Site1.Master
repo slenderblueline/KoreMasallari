@@ -1,0 +1,86 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="KoreMasallari.Site1" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 "/>
+    <meta name="description" content="Kore Masalları Hikayeleri"/>
+<meta name="keywords" content="kore masalları, kore hikayeleri, kore, masallar, hikayeler, masal, hikaye, güney kore"/>
+    <title>Kore Masallari</title>
+<link rel="icon" href="images/icon-1.jpg" />
+    <link href="StyleSheet1.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    </head>
+<body>
+    <form id="form1" runat="server">
+        <div class="kapsayicidiv">
+	<div class="banner">
+		<a href="Default.aspx"><div class="logo"></div></a>
+		<div class="baslik">KORE MASALLARI</div>
+	</div>
+	<div class="cubuklar">
+    <ul>
+   <li><a href="Default.aspx">Anasayfa</a></li>
+   <li><a href="Arsiv.aspx">Arşiv</a></li>
+   <li><a href="http://www.burakaytar.com" target="_blank">Hakkımda</a></li>
+   <li><a href="Iletisim.aspx">İletişim</a></li>
+  </ul>
+    </div>
+	<div class="cubuklar">
+    <div class="mode">
+        Dark mode:            
+        <span class="change">OFF</span>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function accessCookie(cookieName) {
+        var name = cookieName + "=";
+        var allCookieArray = document.cookie.split(';');
+        for (var i = 0; i < allCookieArray.length; i++) {
+            var temp = allCookieArray[i].trim();
+        }
+        if (temp.indexOf(name) == 0) {
+            return temp.substring(name.length, temp.length);
+        }
+        else {
+            return "";
+        }
+    }
+    function checkCookie() {
+        var user = accessCookie("cookie2");
+        if (user != "") {
+            $("body").addClass("dark");
+            $(".change").text("ON");
+        }
+        else {
+            $("body").removeClass("dark");
+            $(".change").text("OFF");
+        }
+    }
+    checkCookie();
+</script>
+<script>
+    $(".change").on("click", function () {
+        if ($("body").hasClass("dark")) {
+            $("body").removeClass("dark");
+            $(".change").text("OFF");
+            document.cookie = "cookie2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        }
+        else {
+            $("body").addClass("dark");
+            $(".change").text("ON");
+            document.cookie = "cookie2=test; expires=Sun, 1 Jan 2023 00:00:00 UTC; path=/";
+        }
+    });
+</script>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+           </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
